@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React, { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
@@ -30,7 +29,6 @@ export default function Home() {
 
   return (
     <Container sx={{ py: 6 }}>
-      {/* Hero Section */}
       <Box
         sx={{
           textAlign: 'center',
@@ -66,7 +64,6 @@ export default function Home() {
           Book Appointment
         </Button>
       </Box>
-
 
       <Box component="section" sx={{ mb: 6 }}>
         <Typography variant="h5" component="h3" sx={{ mb: 3, fontWeight: 500 }}>
@@ -109,7 +106,6 @@ export default function Home() {
           ))}
         </Grid>
       </Box>
-
 
       <Box component="section" sx={{ mt: 6 }}>
         <Typography

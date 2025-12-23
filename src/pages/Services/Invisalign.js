@@ -10,12 +10,13 @@ import {
   ListItemText,
   Button,
 } from '@mui/material';
+import styles from './shared.styles';
 
 export default function Invisalign() {
   return (
-    <Box sx={{ py: 6, backgroundColor: '#fff' }}>
+    <Box sx={styles.section}>
       <Container maxWidth="md">
-        <Typography variant="h4" component="h1" sx={{ mb: 3, fontWeight: 600, color: '#0db1ad' }}>
+        <Typography variant="h4" component="h1" sx={styles.heading}>
           Invisalign Clear Aligners in Nablus
         </Typography>
 
@@ -32,14 +33,14 @@ export default function Invisalign() {
         <Typography paragraph>
           Invisalign aligners are ideal for mild to moderate bite and alignment issues. They’re clear, comfortable, and custom-designed to gently shift your teeth into place. Invisalign is perfect for:
         </Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Correcting misaligned bites',
             'Realigning teeth that have shifted',
             'Closing gaps between teeth',
             'Creating a straight, uniform smile',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -51,7 +52,7 @@ export default function Invisalign() {
         <Typography paragraph>
           If your teeth are crowded or misaligned, Invisalign can help — discreetly and comfortably. It’s a great fit if you:
         </Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Want straight teeth in 12–18 months',
             'Have bite or alignment issues',
@@ -59,7 +60,7 @@ export default function Invisalign() {
             'Prefer a subtle, nearly invisible treatment',
             'Want long-lasting results',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -93,14 +94,14 @@ export default function Invisalign() {
           Bite Correction
         </Typography>
         <Typography paragraph>Invisalign aligners help correct:</Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Crowded teeth: Creates space for healthier growth',
             'Overbite: Reduces discomfort and risk of TMD',
             'Underbite: Eases jaw pain and improves alignment',
             'Gaps: Prevents uneven wear and improves aesthetics',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -109,14 +110,14 @@ export default function Invisalign() {
         <Typography variant="h6" component="h3" sx={{ mt: 3 }}>
           Perfect for Adults and Teens
         </Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Discreet — no visible brackets or wires',
             'No broken brackets or emergency visits',
             'Safe for sports — remove during games',
             'Eat your favorite foods without worry',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -125,14 +126,14 @@ export default function Invisalign() {
         <Typography variant="h6" component="h3" sx={{ mt: 3 }}>
           Improved Oral Health
         </Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Reduces plaque buildup and cavities',
             'Supports healthy gums and jaw alignment',
             'Prevents TMJ pain and headaches',
             'Protects against gum disease and inflammation',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -170,7 +171,6 @@ export default function Invisalign() {
         <Typography variant="h5" component="h2" sx={{ mt: 5, mb: 2 }}>
           Common Invisalign Questions
         </Typography>
-
         {[
           {
             q: 'Who Is an Ideal Candidate?',
@@ -196,7 +196,7 @@ export default function Invisalign() {
           },
           {
             q: 'How Long Does Treatment Take?',
-                      a: 'Most patients complete treatment in about 12 months. Some see results in as little as 6 months, while others may need more time depending on complexity. We’ll give you a tailored timeline after your exam.',
+            a: 'Most patients complete treatment in about 12 months. Some see results in as little as 6 months, while others may need more time depending on complexity. We’ll give you a tailored timeline after your exam.',
           },
         ].map((faq, i) => (
           <Box key={i} sx={{ mb: 4 }}>
@@ -205,9 +205,9 @@ export default function Invisalign() {
             </Typography>
             <Typography paragraph>{faq.a}</Typography>
             {faq.list && (
-              <List sx={{ listStyleType: 'disc', pl: 3 }}>
+              <List sx={styles.list}>
                 {faq.list.map((item, j) => (
-                  <ListItem key={j} sx={{ display: 'list-item', py: 0 }}>
+                  <ListItem key={j} sx={styles.listItem}>
                     <ListItemText primary={item} />
                   </ListItem>
                 ))}
@@ -217,15 +217,7 @@ export default function Invisalign() {
           </Box>
         ))}
 
-        <Box
-          sx={{
-            textAlign: 'center',
-            backgroundColor: '#e6fffd',
-            p: 4,
-            borderRadius: 2,
-            mt: 6,
-          }}
-        >
+        <Box sx={styles.calloutBox}>
           <Typography variant="h5" component="h3" sx={{ mb: 2 }}>
             Let’s Design Your Dream Smile
           </Typography>
@@ -236,17 +228,7 @@ export default function Invisalign() {
             component={RouterLink}
             to="/contact"
             variant="contained"
-            sx={{
-              backgroundColor: '#0db1ad',
-              color: 'white',
-              px: 3,
-              py: 1.5,
-              borderRadius: '6px',
-              textTransform: 'none',
-              '&:hover': {
-                backgroundColor: '#178e8b',
-              },
-            }}
+            sx={styles.buttonPrimary}
           >
             Book Consultation
           </Button>
@@ -255,3 +237,4 @@ export default function Invisalign() {
     </Box>
   );
 }
+

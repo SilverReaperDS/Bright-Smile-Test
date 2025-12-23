@@ -1,7 +1,9 @@
+// src/components/Carousel/Carousel.js
 import React, { useRef, useState, useEffect } from 'react';
 import { Box, IconButton, Stack } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import useInterval from '../../hooks/useInterval';
+import styles from './carousel.styles';
 
 export default function Carousel({
   children,
@@ -12,6 +14,7 @@ export default function Carousel({
 }) {
   const trackRef = useRef(null);
   const [index, setIndex] = useState(0);
+  const [hovering, setHovering] = useState(false);
   const items = React.Children.toArray(children);
   const len = items.length;
 
@@ -21,8 +24,6 @@ export default function Carousel({
   useInterval(() => {
     if (len > 1 && !hovering) next();
   }, autoPlay ? interval : null);
-
-  const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -38,34 +39,19 @@ export default function Carousel({
       className={className}
       onMouseEnter={() => pauseOnHover && setHovering(true)}
       onMouseLeave={() => pauseOnHover && setHovering(false)}
-      sx={{ overflow: 'hidden', position: 'relative' }}
+      sx={styles.root}
       aria-roledescription="carousel"
     >
-      <Box
-        ref={trackRef}
-        sx={{
-          display: 'flex',
-          transition: 'transform 0.5s ease',
-          width: `${len * 100}%`,
-        }}
-      >
+      <Box ref={trackRef} sx={styles.track(len)}>
         {items.map((child, i) => (
-          <Box
-            key={i}
-            sx={{
-              minWidth: '100%',
-              boxSizing: 'border-box',
-              flexShrink: 0,
-            }}
-            aria-hidden={i !== index}
-          >
+          <Box key={i} sx={styles.slide} aria-hidden={i !== index}>
             {child}
           </Box>
         ))}
       </Box>
 
       {len > 1 && (
-        <Stack direction="row" justifyContent="center" spacing={2} sx={{ mt: 2 }}>
+        <Stack direction="row" justifyContent="center" spacing={2} sx={styles.controls}>
           <IconButton onClick={prev} aria-label="Previous slide">
             <ArrowBackIos fontSize="small" />
           </IconButton>

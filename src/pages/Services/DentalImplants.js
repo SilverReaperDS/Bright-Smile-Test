@@ -10,12 +10,13 @@ import {
   ListItemText,
   Button,
 } from '@mui/material';
+import styles from './shared.styles';
 
 export default function DentalImplants() {
   return (
-    <Box sx={{ py: 6, backgroundColor: '#fff' }}>
+    <Box sx={styles.section}>
       <Container maxWidth="md">
-        <Typography variant="h4" component="h1" sx={{ mb: 3, fontWeight: 600, color: '#0db1ad' }}>
+        <Typography variant="h4" component="h1" sx={styles.heading}>
           Restore Your Smile with Dental Implants in Nablus
         </Typography>
 
@@ -38,7 +39,7 @@ export default function DentalImplants() {
         <Typography paragraph>
           But missing teeth can cause more than embarrassment. They can lead to:
         </Typography>
-        <List sx={{ listStyleType: 'disc', pl: 3 }}>
+        <List sx={styles.list}>
           {[
             'Difficulty maintaining oral hygiene',
             'Jawbone shrinkage',
@@ -46,7 +47,7 @@ export default function DentalImplants() {
             'Speech difficulties',
             'Eating challenges and limited diet',
           ].map((item, i) => (
-            <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+            <ListItem key={i} sx={styles.listItem}>
               <ListItemText primary={item} />
             </ListItem>
           ))}
@@ -135,9 +136,9 @@ export default function DentalImplants() {
             </Typography>
             <Typography paragraph>{faq.a}</Typography>
             {faq.list && (
-              <List sx={{ listStyleType: 'disc', pl: 3 }}>
+              <List sx={styles.list}>
                 {faq.list.map((item, j) => (
-                  <ListItem key={j} sx={{ display: 'list-item', py: 0 }}>
+                  <ListItem key={j} sx={styles.listItem}>
                     <ListItemText primary={item} />
                   </ListItem>
                 ))}
@@ -147,15 +148,7 @@ export default function DentalImplants() {
           </Box>
         ))}
 
-        <Box
-          sx={{
-            textAlign: 'center',
-            backgroundColor: '#e6fffd',
-            p: 4,
-            borderRadius: 2,
-            mt: 6,
-          }}
-        >
+        <Box sx={styles.calloutBox}>
           <Typography variant="h5" component="h3" sx={{ mb: 2 }}>
             Let’s Design Your Dream Smile
           </Typography>
@@ -166,17 +159,7 @@ export default function DentalImplants() {
             component={RouterLink}
             to="/contact"
             variant="contained"
-            sx={{
-              backgroundColor: '#0db1ad',
-              color: 'white',
-              px: 3,
-              py: 1.5,
-              borderRadius: '6px',
-              textTransform: 'none',
-              '&:hover': {
-                backgroundColor: '#178e8b',
-              },
-            }}
+            sx={styles.buttonPrimary}
           >
             Book Consultation
           </Button>

@@ -1,3 +1,4 @@
+// src/pages/Testimonials/Testimonials.js
 import React from 'react';
 import { getTestimonials } from '../../services/api';
 import useFetch from '../../hooks/useFetch';
@@ -12,30 +13,27 @@ import {
   Button,
   Grid,
 } from '@mui/material';
+import styles from './testimonials.styles';
 
 export default function Testimonials() {
   const fetcher = () => getTestimonials();
   const { data: testimonials, loading, error, refetch } = useFetch(fetcher, []);
 
   return (
-    <Box sx={{ py: 6, backgroundColor: '#fff' }}>
+    <Box sx={styles.section}>
       <Container maxWidth="lg">
-        <Typography
-          variant="h4"
-          component="h2"
-          sx={{ fontWeight: 600, color: '#0db1ad', mb: 4, textAlign: 'center' }}
-        >
+        <Typography variant="h4" component="h2" sx={styles.heading}>
           Patient Testimonials
         </Typography>
 
         {loading && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
+          <Box sx={styles.loading}>
             <CircularProgress />
           </Box>
         )}
 
         {error && (
-          <Box sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
+          <Box sx={styles.errorBox}>
             <Alert
               severity="error"
               action={
@@ -51,7 +49,7 @@ export default function Testimonials() {
 
         {!loading && !error && Array.isArray(testimonials) && testimonials.length > 0 && (
           <>
-            <Box component="section" aria-label="Featured testimonials" sx={{ mb: 5 }}>
+            <Box component="section" aria-label="Featured testimonials" sx={styles.featuredCarousel}>
               <Carousel interval={4500} autoPlay pauseOnHover>
                 {testimonials.slice(0, 5).map((t) => (
                   <TestimonialCard key={t.id} {...t} />
@@ -60,7 +58,7 @@ export default function Testimonials() {
             </Box>
 
             <Box component="section">
-              <Typography variant="h5" component="h3" sx={{ mb: 3 }}>
+              <Typography variant="h5" component="h3" sx={styles.allTestimonialsHeading}>
                 All Testimonials
               </Typography>
               <Grid container spacing={3}>
@@ -75,7 +73,7 @@ export default function Testimonials() {
         )}
 
         {!loading && !error && (!testimonials || testimonials.length === 0) && (
-          <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', mt: 4 }}>
+          <Typography variant="body2" sx={styles.emptyState}>
             No testimonials available yet.
           </Typography>
         )}

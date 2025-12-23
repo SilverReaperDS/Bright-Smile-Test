@@ -6,13 +6,13 @@ import Footer from './components/Global/Footer';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
-import SmileGallery from './pages/Testimonials/SmileGallery';
+import SmileGallery from './pages/SmileGallery/SmileGallery';
 import Testimonials from './pages/Testimonials/Testimonials';
 import DentalImplants from './pages/Services/DentalImplants';
 import Invisalign from './pages/Services/Invisalign';
 import Cosmetic from './pages/Services/Cosmetic';
 import Login from './pages/Login/login'; 
-import Register from './pages/Login/Register';
+import Register from './pages/Register/Register';
 import Logout from './pages/Login/logout';
 
 export default function App() {

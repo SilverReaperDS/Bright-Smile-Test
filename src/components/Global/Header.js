@@ -1,3 +1,4 @@
+// src/components/Header/Header.js
 import React, { useEffect, useState } from 'react';
 import {
   AppBar,
@@ -14,6 +15,7 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import styles from './header.styles';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -56,65 +58,34 @@ export default function Header() {
 
   return (
     <>
-      <AppBar
-        position="fixed"
-        elevation={scrolled ? 4 : 0}
-        sx={{
-          backgroundColor: scrolled ? '#0db1ad' : 'rgba(13, 177, 173, 0.85)',
-          backdropFilter: 'blur(6px)',
-          transition: 'background-color 0.3s ease',
-        }}
-      >
-        <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
+      <AppBar position="fixed" elevation={scrolled ? 4 : 0} sx={styles.appBar(scrolled)}>
+        <Toolbar sx={styles.toolbar}>
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="h6"
               component={Link}
               to="/"
-              sx={{
-                textDecoration: 'none',
-                color: 'white',
-                fontWeight: 700,
-                fontSize: 22,
-              }}
+              sx={styles.logo}
             >
               BrightSmile
             </Typography>
           </Box>
 
-          <Box
-            sx={{
-              flex: 2,
-              display: { xs: 'none', md: 'flex' },
-              justifyContent: 'center',
-              gap: 2,
-            }}
-          >
+          <Box sx={styles.navLinks}>
             {navLinks.map(({ label, path }) => (
               <Button
                 key={path}
                 component={Link}
                 to={path}
                 color="inherit"
-                sx={{
-                  fontWeight: isActive(path) ? 700 : 400,
-                  borderBottom: isActive(path) ? '2px solid white' : 'none',
-                  borderRadius: 0,
-                }}
+                sx={styles.navButton(isActive(path))}
               >
                 {label}
               </Button>
             ))}
           </Box>
 
-          <Box
-            sx={{
-              flex: 1,
-              display: { xs: 'none', md: 'flex' },
-              justifyContent: 'flex-end',
-              gap: 1,
-            }}
-          >
+          <Box sx={styles.authBox}>
             {username ? (
               <>
                 <Typography sx={{ color: 'white' }}>Hi, {username}</Typography>
@@ -147,7 +118,7 @@ export default function Header() {
       </AppBar>
 
       <Drawer anchor="right" open={menuOpen} onClose={() => setMenuOpen(false)}>
-        <Box sx={{ width: 250, p: 2 }}>
+        <Box sx={styles.drawerBox}>
           <Typography variant="h6" sx={{ mb: 2 }}>
             Menu
           </Typography>
@@ -164,7 +135,7 @@ export default function Header() {
               </ListItem>
             ))}
           </List>
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={styles.drawerDivider} />
           {username ? (
             <>
               <Typography sx={{ mb: 1 }}>Hi, {username}</Typography>
@@ -179,7 +150,7 @@ export default function Header() {
                 to="/login"
                 variant="contained"
                 fullWidth
-                sx={{ mb: 1, backgroundColor: '#0db1ad' }}
+                sx={styles.drawerLoginButton}
               >
                 Login
               </Button>

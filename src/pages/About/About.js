@@ -6,6 +6,7 @@ import {
   Container,
   CircularProgress,
 } from '@mui/material';
+import styles from './about.styles';
 
 export default function About() {
   const [team, setTeam] = useState([]);
@@ -21,81 +22,42 @@ export default function About() {
   }, []);
 
   return (
-    <Container sx={{ py: 6 }}>
-      <Typography
-        variant="h4"
-        component="h2"
-        sx={{ fontWeight: 600, color: '#0db1ad', mb: 2 }}
-      >
+    <Container sx={styles.container}>
+      <Typography variant="h4" component="h2" sx={styles.heading}>
         About BrightSmile
       </Typography>
 
-      <Typography variant="body1" sx={{ maxWidth: 800, mb: 5 }}>
+      <Typography variant="body1" sx={styles.description}>
         BrightSmile is a student-built project for a responsive dental clinic website.
         Our team combines UX, React, and frontend best practices to deliver a clean,
         accessible experience.
       </Typography>
 
-      <Box sx={{ mt: 4 }}>
-        <Typography
-          variant="h5"
-          component="h3"
-          sx={{ mb: 3, fontWeight: 500, color: '#00796b' }}
-        >
+      <Box sx={styles.teamSection}>
+        <Typography variant="h5" component="h3" sx={styles.teamHeading}>
           Meet the Team
         </Typography>
 
         {team.length === 0 ? (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Box sx={styles.loader}>
             <CircularProgress />
           </Box>
         ) : (
           team.map((member) => (
-            <Box
-              key={member.id}
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '24px',
-                mb: '32px',
-                border: '1px solid #eee',
-                borderRadius: '8px',
-                p: '16px',
-                backgroundColor: '#fff',
-                boxShadow: '0 1px 4px rgba(0, 0, 0, 0.05)',
-                transition: 'box-shadow 0.3s ease, transform 0.3s ease',
-                '&:hover': {
-                  boxShadow: '0 6px 16px rgba(0, 0, 0, 0.12)',
-                  transform: 'translateY(-4px)',
-                },
-              }}
-            >
+            <Box key={member.id} sx={styles.card}>
               <Box
                 component="img"
                 src={member.photo}
                 alt={member.name}
-                sx={{
-                  width: '160px',
-                  height: '160px',
-                  objectFit: 'cover',
-                  borderRadius: '8px',
-                }}
+                sx={styles.photo}
               />
               <Box sx={{ flex: 1 }}>
-                <Typography
-                  variant="h6"
-                  component="h4"
-                  sx={{ mb: '4px', fontSize: '20px', color: '#0db1ad' }}
-                >
+                <Typography variant="h6" component="h4" sx={styles.name}>
                   {member.name}
                 </Typography>
-                <Typography sx={{ fontWeight: 'bold', mb: '8px' }}>
-                  {member.role}
-                </Typography>
-                <Typography sx={{ mb: '8px', lineHeight: 1.6 }}>
-                  {member.bio}
-                </Typography>
-                <Typography sx={{ fontSize: '14px', color: '#555' }}>
+                <Typography sx={styles.role}>{member.role}</Typography>
+                <Typography sx={styles.bio}>{member.bio}</Typography>
+                <Typography sx={styles.id}>
                   <strong>Student ID:</strong> {member.studentId}
                 </Typography>
               </Box>

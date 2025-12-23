@@ -1,4 +1,4 @@
-// src/pages/Contact.js
+// src/pages/Contact/Contact.js
 import React from 'react';
 import {
   Box,
@@ -7,16 +7,17 @@ import {
   TextField,
   Button,
 } from '@mui/material';
+import styles from './contact.styles';
 
 export default function Contact() {
   return (
-    <Box sx={{ py: 6, backgroundColor: '#fff' }}>
+    <Box sx={styles.root}>
       <Container maxWidth="sm">
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Typography variant="h4" component="h1" id="contact-heading" sx={{ fontWeight: 600, color: '#0db1ad' }}>
+        <Box sx={styles.header}>
+          <Typography variant="h4" component="h1" id="contact-heading" sx={styles.title}>
             Contact Us
           </Typography>
-          <Typography id="contact-desc" sx={{ mt: 1 }}>
+          <Typography id="contact-desc" sx={styles.subtitle}>
             We’d love to hear from you. Fill out the form and we’ll get back to you shortly.
           </Typography>
         </Box>
@@ -27,11 +28,7 @@ export default function Contact() {
           aria-describedby="contact-desc"
           noValidate
           onSubmit={(e) => e.preventDefault()}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
-          }}
+          sx={styles.form}
         >
           <TextField
             id="name"
@@ -76,22 +73,12 @@ export default function Contact() {
             fullWidth
           />
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+          <Box sx={styles.buttonWrapper}>
             <Button
               type="submit"
               variant="contained"
               aria-label="Send message"
-              sx={{
-                backgroundColor: '#0db1ad',
-                color: 'white',
-                px: 4,
-                py: 1.5,
-                borderRadius: '6px',
-                textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#178e8b',
-                },
-              }}
+              sx={styles.button}
             >
               Send Message
             </Button>

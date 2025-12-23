@@ -10,16 +10,17 @@ import {
   Container,
   Button,
 } from '@mui/material';
+import styles from './shared.styles';
 
 export default function Cosmetic() {
   return (
-    <Box sx={{ py: 6, backgroundColor: '#fff' }}>
+    <Box sx={styles.section}>
       <Container maxWidth="md">
-        <Typography variant="h4" component="h1" sx={{ mb: 2, fontWeight: 600, color: '#0db1ad' }}>
+        <Typography variant="h4" component="h1" sx={styles.heading}>
           We Design Beautiful Enduring Smiles
         </Typography>
 
-        <Typography variant="body1" sx={{ mb: 4, fontSize: '1.1rem' }}>
+        <Typography variant="body1" sx={styles.paragraph}>
           Your teeth aren’t just for chewing — they tell a powerful story. A brilliant white smile enhances your appearance and boosts your confidence.
         </Typography>
 
@@ -33,17 +34,17 @@ export default function Cosmetic() {
         </Box>
 
         <Box sx={{ mb: 5, backgroundColor: '#f9f9f9', p: 3, borderRadius: 2 }}>
-          <Typography variant="h5" component="h2" sx={{ mb: 2, color: '#00796b' }}>
+          <Typography variant="h5" component="h2" sx={styles.subheading}>
             Is Cosmetic Dentistry Right for You?
           </Typography>
-          <List sx={{ listStyleType: 'disc', pl: 3 }}>
+          <List sx={styles.list}>
             {[
               'You want to smile confidently around friends and family',
               'You avoid social settings due to gaps or imperfections',
               'Your smile affects your self-esteem or mental health',
               'You face oral health challenges that impact daily life',
             ].map((item, i) => (
-              <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+              <ListItem key={i} sx={styles.listItem}>
                 <ListItemText primary={item} />
               </ListItem>
             ))}
@@ -60,9 +61,9 @@ export default function Cosmetic() {
           <Typography paragraph>
             Cosmetic dentistry isn’t one-size-fits-all. We offer a full suite of services, including:
           </Typography>
-          <List sx={{ listStyleType: 'disc', pl: 3 }}>
+          <List sx={styles.list}>
             {['Crowns', 'Dental Bridges', 'Dental Implants', 'Teeth Whitening', 'Veneers'].map((item, i) => (
-              <ListItem key={i} sx={{ display: 'list-item', py: 0 }}>
+              <ListItem key={i} sx={styles.listItem}>
                 <ListItemText primary={item} />
               </ListItem>
             ))}
@@ -85,7 +86,6 @@ export default function Cosmetic() {
           <Typography variant="h5" component="h2" sx={{ mb: 3 }}>
             Popular Cosmetic Treatments
           </Typography>
-
           {[
             {
               title: 'Teeth Whitening',
@@ -122,7 +122,7 @@ export default function Cosmetic() {
               {treatment.steps && (
                 <List sx={{ listStyleType: 'decimal', pl: 3 }}>
                   {treatment.steps.map((step, j) => (
-                    <ListItem key={j} sx={{ display: 'list-item', py: 0 }}>
+                    <ListItem key={j} sx={styles.listItem}>
                       <ListItemText primary={step} />
                     </ListItem>
                   ))}
@@ -136,7 +136,6 @@ export default function Cosmetic() {
           <Typography variant="h5" component="h2" sx={{ mb: 3 }}>
             Common Questions
           </Typography>
-
           {[
             {
               q: 'Are All Treatments Performed In-House?',
@@ -167,9 +166,9 @@ export default function Cosmetic() {
               </Typography>
               {faq.a && <Typography>{faq.a}</Typography>}
               {faq.list && (
-                <List sx={{ listStyleType: 'disc', pl: 3 }}>
+                <List sx={styles.list}>
                   {faq.list.map((item, j) => (
-                    <ListItem key={j} sx={{ display: 'list-item', py: 0 }}>
+                    <ListItem key={j} sx={styles.listItem}>
                       <ListItemText primary={item} />
                     </ListItem>
                   ))}
@@ -179,15 +178,7 @@ export default function Cosmetic() {
           ))}
         </Box>
 
-        <Box
-          sx={{
-            textAlign: 'center',
-            backgroundColor: '#e6fffd',
-            p: 4,
-            borderRadius: 2,
-            mt: 6,
-          }}
-        >
+        <Box sx={styles.calloutBox}>
           <Typography variant="h5" component="h3" sx={{ mb: 2 }}>
             Let’s Design Your Dream Smile
           </Typography>
@@ -198,17 +189,7 @@ export default function Cosmetic() {
             component={RouterLink}
             to="/contact"
             variant="contained"
-            sx={{
-              backgroundColor: '#0db1ad',
-              color: 'white',
-              px: 3,
-              py: 1.5,
-              borderRadius: '6px',
-              textTransform: 'none',
-              '&:hover': {
-                backgroundColor: '#178e8b',
-              },
-            }}
+            sx={styles.buttonPrimary}
           >
             Book Consultation
           </Button>
